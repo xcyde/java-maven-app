@@ -15,6 +15,20 @@ pipeline {
                 }
             }
         }
+        stage("Checkout SCM") {
+            steps {
+                script {
+                    checkout([
+                        $class: 'GitSCM',
+                        branches: [[name: '*/jenkins-jobs']],  // выбираем нужную ветку
+                        userRemoteConfigs: [[url: 'https://gitlab.com/nanuchi/java-maven-app.git']],
+                        extensions: [
+                            [$class: 'CloneOption', shallow: false, noTags: false, reference: '', timeout: 600]  // Увеличиваем таймаут до 10 минут
+                        ]
+                    ])
+                }
+            }
+        }
         stage("build jar") {
             steps {
                 script {
