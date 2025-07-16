@@ -20,10 +20,10 @@ pipeline {
                 script {
                     checkout([
                         $class: 'GitSCM',
-                        branches: [[name: '*/jenkins-jobs']],  // выбираем нужную ветку
+                        branches: [[name: '*/jenkins-jobs']],
                         userRemoteConfigs: [[url: 'https://gitlab.com/nanuchi/java-maven-app.git']],
                         extensions: [
-                            [$class: 'CloneOption', shallow: false, noTags: false, reference: '', timeout: 600]  // Увеличиваем таймаут до 10 минут
+                            [$class: 'CloneOption', shallow: false, noTags: false, reference: '', timeout: 1500]
                         ]
                     ])
                 }
