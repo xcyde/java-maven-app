@@ -23,7 +23,7 @@ pipeline {
                         branches: [[name: '*/jenkins-jobs']],
                         userRemoteConfigs: [[url: 'https://gitlab.com/nanuchi/java-maven-app.git']],
                         extensions: [
-                            [$class: 'CloneOption', shallow: false, noTags: false, reference: '', timeout: 1500]
+                            [$class: 'CloneOption', shallow: true, noTags: false, reference: '', timeout: 1500]
                         ]
                     ])
                 }
