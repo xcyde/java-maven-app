@@ -11,13 +11,6 @@ pipeline {
         stage("init") {
             steps {
                 script {
-                    gv = load "script.groovy"
-                }
-            }
-        }
-        stage("Checkout SCM") {
-            steps {
-                script {
                     checkout([
                         $class: 'GitSCM',
                         branches: [[name: '*/jenkins-jobs']],
@@ -26,6 +19,7 @@ pipeline {
                             [$class: 'CloneOption', shallow: true, noTags: false, reference: '', timeout: 1500]
                         ]
                     ])
+                    gv = load "Jenkinsfile-simple-pipeline/script.groovy"
                 }
             }
         }
